@@ -6,4 +6,3 @@ fmt:
 
 echo:
 	echo "hello"
-
