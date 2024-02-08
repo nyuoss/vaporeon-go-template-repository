@@ -1,17 +1,21 @@
 package calculator
 
+import "go-template/pkg/operator"
+
 type Calculator interface {
-	 Add() int
+	GetAnswer() int
 }
 
 type simpleClr struct {
-	x, y int
+	adr operator.Adder
 }
 
 func NewCalculator(x, y int) Calculator {
-	return &simpleClr{x, y}
+	return &simpleClr{
+		adr: operator.NewAdder(x, y),
+	}
 }
 
-func (s *simpleClr) Add() int {
-	return s.x + s.y
+func (s *simpleClr) GetAnswer() int {
+	return s.adr.Add()
 }

@@ -1,11 +1,8 @@
-package calculator
+package operator
 
-import (
-	"go-template/pkg/operator"
-	"testing"
-)
+import "testing"
 
-func Test_simpleClr_Add(t *testing.T) {
+func Test_Adder(t *testing.T) {
 	type fields struct {
 		x int
 		y int
@@ -28,10 +25,11 @@ func Test_simpleClr_Add(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			s := &simpleClr{
-				adr: operator.NewAdder(tt.fields.x, tt.fields.y),
+			s := &adder{
+				x: tt.fields.x,
+				y: tt.fields.y,
 			}
-			if got := s.GetAnswer(); got != tt.want {
+			if got := s.Add(); got != tt.want {
 				t.Errorf("simpleClr.Add() = %v, want %v", got, tt.want)
 			}
 		})
