@@ -1,8 +1,8 @@
 ## Description
-Describe what changes are you making and why is this required
+Describe what changes you are making and why they are required
 
 ## How did you test the changes?
-Describe how did you test the changes
+Describe how you tested the changes
 
 ## Testing Screenshots (Optional)
 Add relevant screenshots for reference
