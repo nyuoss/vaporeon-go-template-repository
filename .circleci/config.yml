@@ -4,7 +4,7 @@ version: 2.1
 
 on:
   pull_request:
-    types: [opened,reopened]
+    types: [opened, reopened, synchronize] # Include the synchronize event type
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/configuration-reference/#jobs
