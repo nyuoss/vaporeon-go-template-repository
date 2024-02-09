@@ -18,4 +18,3 @@ func NewAdder(x, y int) Adder {
 func (a *adder) Add() int {
 	return a.x + a.y
 }
-

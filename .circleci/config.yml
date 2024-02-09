@@ -2,10 +2,14 @@
 # See: https://circleci.com/docs/configuration-reference
 version: 2.1
 
+on:
+  pull_request:
+    types: [opened,reopened]
+
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/configuration-reference/#jobs
 jobs:
-  build:
+  merge-check:
     working_directory: ~/repo
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/configuration-reference/#docker-machine-macos-windows-executor
@@ -17,7 +21,9 @@ jobs:
       - checkout
       - run:
           name: Install Dependencies
-          command: go mod download
+          command: |
+            go mod download
+            make tools
       - run:
           name: Run tests
           command: |
@@ -25,11 +31,15 @@ jobs:
             gotestsum --junitfile /tmp/test-reports/unit-tests.xml
       - store_test_results:
           path: /tmp/test-reports
+      - run:
+          name: Static Analysis and Format Check
+          command: |
+            make lint
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
 workflows:
-  sample: # This is the name of the workflow, feel free to change it to better match your workflow.
+  merge-check: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:
-      - build
+      - merge-check
