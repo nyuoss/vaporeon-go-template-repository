@@ -1,7 +1,7 @@
 # go-template
-An initial template repository for a Go project
 
-# Introdcution
+# Introduction
+An initial template repository for a Go project
 
 ## Tools 
 1. Language: Golang@1.21.3
@@ -31,12 +31,12 @@ Calculator Component is the Interface exposed to the user.
 + It gives the user an encapsulated calculator object which receives operands.
 
 Operator Component is the internal library for the Calculator. 
-+ It gives the calculator some operator objects which implement the real calculations.
++ It gives the calculator some operator objects which implements the real calculations.
 
 Please edit it for your projects.
 
 ## CI Steps
-1. Install dependency and tools(golangci-lint)
+1. Install dependency and tools (golangci-lint)
 2. Run unit tests
 3. Code static analysis and format check
 
@@ -53,8 +53,10 @@ Also, you can run lint, format and test with make before make a pull request.
 ``` shell
 # test 
 make test
+
 # lint
 make lint
+
 # format
 make format
 ```
