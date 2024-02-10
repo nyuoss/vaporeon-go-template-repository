@@ -1,8 +1,10 @@
 package operator
 
-import "testing"
+import (
+	"testing"
+)
 
-func Test_Adder(t *testing.T) {
+func Test_adder_Add(t *testing.T) {
 	type fields struct {
 		x int
 		y int
@@ -25,12 +27,12 @@ func Test_Adder(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			s := &adder{
+			a := &adder{
 				x: tt.fields.x,
 				y: tt.fields.y,
 			}
-			if got := s.Add(); got != tt.want {
-				t.Errorf("simpleClr.Add() = %v, want %v", got, tt.want)
+			if got := a.Add(); got != tt.want {
+				t.Errorf("adder.Add() = %v, want %v", got, tt.want)
 			}
 		})
 	}
